@@ -1,0 +1,18 @@
+{
+  "email": "Email Address",
+  "@email": {
+    "description": "Email address"
+  },
+  "password": "Password",
+  "@password": {
+    "description": "Password"
+  },
+  "login": "Login",
+  "@login": {
+    "description": "Login button text"
+  },
+  "register": "Register",
+  "@register": {
+    "description": "Register button text"
+  }
+}
