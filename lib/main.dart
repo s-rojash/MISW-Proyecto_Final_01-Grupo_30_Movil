@@ -3,7 +3,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:abcjobs_movil/Utils/Utils.dart';
 
-import 'HomePage.dart';
+import 'Pages/LoginPage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
               )
           )
       ),
-      home: HomePage(title: 'ABCJobs'),
+      home: LoginPage(title: 'ABCJobs'),
     );
   }
 }

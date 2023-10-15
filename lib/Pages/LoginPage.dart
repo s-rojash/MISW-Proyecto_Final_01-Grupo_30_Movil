@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import 'Utils/Utils.dart';
+import '../Utils/Utils.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key, required this.title});
+class LoginPage extends StatefulWidget {
+  const LoginPage({super.key, required this.title});
   final String title;
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<LoginPage> createState() => _LoginPageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
