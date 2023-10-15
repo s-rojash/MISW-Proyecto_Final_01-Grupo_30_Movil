@@ -20,22 +20,32 @@ class MyApp extends StatelessWidget {
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
       theme: ThemeData(
-        fontFamily: 'Roboto',
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: HexColor("5793e0"),
-          primary: HexColor("ffffff"),
-          surface: HexColor("5793e0"),
-          onPrimary: HexColor("5793e0"),
-        ),
-        useMaterial3: true,
+          fontFamily: 'Roboto',
+          colorScheme: ColorScheme.fromSeed(
+            seedColor: HexColor("5793e0"),
+            primary: HexColor("ffffff"),
+            surface: HexColor("5793e0"),
+            onPrimary: HexColor("5793e0"),
+          ),
+          useMaterial3: true,
           inputDecorationTheme: InputDecorationTheme(
-              filled: true,
-              fillColor: Colors.white,
-              labelStyle: TextStyle(
-                color: HexColor("00639A"),
-              )
-          )
-      ),
+            filled: true,
+            fillColor: Colors.white,
+            labelStyle: TextStyle(
+              color: HexColor("00639A"),
+            ),
+            errorStyle: TextStyle(color: Colors.white),
+            prefixIconColor:
+                MaterialStateColor.resolveWith((Set<MaterialState> states) {
+              if (states.contains(MaterialState.focused)) {
+                return Colors.green;
+              }
+              if (states.contains(MaterialState.error)) {
+                return Colors.red;
+              }
+              return Colors.grey;
+            }),
+          )),
       home: LoginPage(title: 'ABCJobs'),
     );
   }

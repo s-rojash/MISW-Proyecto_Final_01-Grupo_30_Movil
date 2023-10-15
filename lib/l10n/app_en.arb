@@ -38,5 +38,9 @@
   "fieldRequired": "Required field",
   "@mobilePhoneNumber": {
     "description": "Message for an empty required field"
+  },
+  "invalidEmail": "Email is not valid",
+  "@invalidEmail": {
+    "description": "Message for an invalid email field"
   }
 }

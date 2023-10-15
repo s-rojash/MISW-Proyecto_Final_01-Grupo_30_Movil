@@ -8,5 +8,6 @@
     "idDocumentType": "Tipo de documento de identidad",
     "idDocumentNumber": "Número de documento de identidad",
     "mobilePhoneNumber": "Número de celular",
-    "fieldRequired": "El campo es obligatorio"
+    "fieldRequired": "El campo es obligatorio",
+    "invalidEmail": "El correo electrónico no es válido"
 }
