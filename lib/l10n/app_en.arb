@@ -14,5 +14,29 @@
   "register": "Register",
   "@register": {
     "description": "Register button text"
+  },
+  "firstName": "FirstName",
+  "@firstName": {
+    "description": "Candidate's first name"
+  },
+  "lastName": "LastName",
+  "@lastName": {
+    "description": "Candidate's last name"
+  },
+  "idDocumentType": "ID Document Type",
+  "@idDocumentType": {
+    "description": "Candidate's ID document nype"
+  },
+  "idDocumentNumber": "ID Document Number",
+  "@idDocumentNumber": {
+    "description": "Candidate's ID document number"
+  },
+  "mobilePhoneNumber": "Mobile Phone Number",
+  "@mobilePhoneNumber": {
+    "description": "Candidate's mobile phone number"
+  },
+  "fieldRequired": "Required field",
+  "@mobilePhoneNumber": {
+    "description": "Message for an empty required field"
   }
 }

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import '../Utils/Utils.dart';
+import '../Utils/utils.dart';
+import 'register_page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key, required this.title});
@@ -50,6 +51,7 @@ class _LoginPageState extends State<LoginPage> {
               SizedBox(height: 40),
               SizedBox(width: 300,
                 child: TextFormField(
+                    obscureText: true,
                     decoration: InputDecoration(
                       label: RequiredLabel( AppLocalizations.of(context)!.password),
                       suffixIcon: const Icon(Icons.cancel_outlined),
@@ -77,10 +79,10 @@ class _LoginPageState extends State<LoginPage> {
                       onPrimary: Colors.white, // foreground
                     ),
                     onPressed: () {
-                      //Navigator.push(
-                      //  context,
-                      //MaterialPageRoute(builder: (context) => const AutenticacionPage()),
-                      //);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const RegisterPage()),
+                      );
                     },
                     child: Text(AppLocalizations.of(context)!.login, style: TextStyle(
                       fontSize: 20))
@@ -90,10 +92,16 @@ class _LoginPageState extends State<LoginPage> {
               SizedBox(
                 height: 40,
                 width: 300,
-                child: ElevatedButton(onPressed: () {},
-                        child: Text(AppLocalizations.of(context)!.register, style: TextStyle(
-                            fontSize: 20)
-                        )
+                child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const RegisterPage()),
+                      );
+                    },
+                      child: Text(AppLocalizations.of(context)!.register, style: TextStyle(
+                          fontSize: 20)
+                      )
                     ),
                   ),
           ],

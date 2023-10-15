@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:abcjobs_movil/Utils/Utils.dart';
+import 'package:abcjobs_movil/Utils/utils.dart';
 
-import 'Pages/LoginPage.dart';
+import 'Pages/login_page.dart';
 
 void main() {
   runApp(const MyApp());

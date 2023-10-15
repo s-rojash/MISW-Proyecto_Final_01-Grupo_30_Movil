@@ -2,5 +2,11 @@
     "email": "Correo electrónico",
     "password": "Contraseña",
     "login": "Iniciar sesión",
-    "register": "Registrese"
+    "register": "Registrarse",
+    "firstName": "Nombres",
+    "lastName": "Apellidos",
+    "idDocumentType": "Tipo de documento de identidad",
+    "idDocumentNumber": "Número de documento de identidad",
+    "mobilePhoneNumber": "Número de celular",
+    "fieldRequired": "El campo es obligatorio"
 }
