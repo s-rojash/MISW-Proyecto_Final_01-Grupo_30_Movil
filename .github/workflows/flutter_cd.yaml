@@ -27,7 +27,3 @@ jobs:
       - run: flutter pub get
       - run: flutter test
       - run: flutter build appbundle -v
-      - uses: sparkfabrik/android-build-action@v1.5.0
-        with :
-         project-path: android
-         output-path: ABCJobs.apk
