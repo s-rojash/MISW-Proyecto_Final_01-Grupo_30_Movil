@@ -25,3 +25,7 @@ Las pruebas ya generan la cobertura en /coverage/lcov.info, para exportar a HTML
 
 ![image](https://github.com/s-rojash/MISW-Proyecto_Final_01-Grupo_30_Movil/assets/98789252/0096456a-6002-44d0-a0c7-f1e06387f95c)
 
+En windows, es posible que el script de conversión no esté disponible como variable de entorno, en ese caso se puede ejecutar directamente así:
+
+``` perl C:\ProgramData\chocolatey\lib\lcov\tools\bin\genhtml -o coverage\html coverage\lcov.info
+```
