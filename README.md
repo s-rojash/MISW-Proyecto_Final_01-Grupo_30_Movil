@@ -27,5 +27,4 @@ Las pruebas ya generan la cobertura en /coverage/lcov.info, para exportar a HTML
 
 En windows, es posible que el script de conversión no esté disponible como variable de entorno, en ese caso se puede ejecutar directamente así:
 
-``` perl C:\ProgramData\chocolatey\lib\lcov\tools\bin\genhtml -o coverage\html coverage\lcov.info
-```
+```perl C:\ProgramData\chocolatey\lib\lcov\tools\bin\genhtml -o coverage\html coverage\lcov.info```
