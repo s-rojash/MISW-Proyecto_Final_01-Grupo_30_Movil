@@ -2,19 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:abcjobs_movil/Utils/utils.dart';
+import 'package:toast/toast.dart';
 
 import 'Pages/login_page.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const ABCJobsApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class ABCJobsApp extends StatelessWidget {
+  const ABCJobsApp({super.key});
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+
     return MaterialApp(
       title: 'ABCJobs',
       localizationsDelegates: AppLocalizations.localizationsDelegates,

@@ -9,5 +9,11 @@
     "idDocumentNumber": "Número de documento de identidad",
     "mobilePhoneNumber": "Número de celular",
     "fieldRequired": "El campo es obligatorio",
-    "invalidEmail": "El correo electrónico no es válido"
+    "invalidEmail": "El correo electrónico no es válido",
+    "serviceResponseError": "Error en la respuesta del servidor",
+    "serviceResponseNotFound": "No se encontró el registro",
+    "loginOkMessage": "Sesión iniciada correctamente",
+    "loginErrorMessage": "Correo electrónico o contraseña inválidos",
+    "registerOkMessage": "¡Cuenta creada correctamente! por favor inicie sesión con su correo y contraseña",
+    "registerErrorMessage": "No se pudo crear la cuenta, revise todos los campos"
 }

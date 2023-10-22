@@ -11,7 +11,7 @@ void main() {
     String email = "email@test.com";
     String celular = "31234545678";
     String tipoDocumento = "C.C.";
-    String numDocumento = "ASD123456";
+    double numDocumento = 123456;
     Candidato candidato = Candidato(
         id: id,
         nombres: nombres,
@@ -37,8 +37,8 @@ void main() {
       'apellidos': "Apellidos de prueba",
       'email': "email@test.com",
       'celular': "31234545678",
-      'tipoDocumento': "C.C.",
-      'numDocumento': "ASD123456"
+      'tipoDocumento': "1",
+      'numDocumento': 123456 + 0.0
     };
 
     Candidato candidato = Candidato.fromJson(candidatoJson);
@@ -49,7 +49,7 @@ void main() {
     expect(candidato.email, candidatoJson['email']);
     expect(candidato.celular, candidatoJson['celular']);
     expect(candidato.tipoDocumento, candidatoJson['tipoDocumento']);
-    expect(candidato.numDocumento, candidatoJson['numDocumento']);
+    expect(candidato.numDocumento, candidatoJson['numDocumento'] as double);
   });
 
   test('Probar serialización a json', () async {
@@ -59,8 +59,8 @@ void main() {
         apellidos: "Apellidos de prueba",
         email: "email@test.com",
         celular: "31234545678",
-        tipoDocumento: "C.C.",
-        numDocumento: "ASD123456");
+        tipoDocumento: "1",
+        numDocumento: 123456);
 
     final candidatoJson = candidato.toJson();
 
@@ -70,6 +70,26 @@ void main() {
     expect(candidato.email, candidatoJson['email']);
     expect(candidato.celular, candidatoJson['celular']);
     expect(candidato.tipoDocumento, candidatoJson['tipoDocumento']);
-    expect(candidato.numDocumento, candidatoJson['numDocumento']);
+    expect(candidato.numDocumento, candidatoJson['numDocumento'] as double);
   });
+
+  test('Probar setters del modelo', () async {
+    Candidato candidato = Candidato();
+    candidato.id =  13;
+    candidato.nombres= "Nombres de prueba";
+    candidato.apellidos= "Apellidos de prueba";
+    candidato.email= "email@test.com";
+    candidato.celular= "31234545678";
+    candidato.tipoDocumento= "1";
+    candidato.numDocumento= 123456;
+
+    expect(candidato.id, 13);
+    expect(candidato.nombres, "Nombres de prueba");
+    expect(candidato.apellidos, "Apellidos de prueba");
+    expect(candidato.email,"email@test.com");
+    expect(candidato.celular, "31234545678");
+    expect(candidato.tipoDocumento, "1");
+    expect(candidato.numDocumento, 123456);
+  });
+
 }
