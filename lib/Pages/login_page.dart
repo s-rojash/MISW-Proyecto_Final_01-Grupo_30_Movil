@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:toast/toast.dart';
 
 import '../BackendServices/candidato_services.dart';
 import '../Utils/utils.dart';
@@ -10,6 +11,7 @@ class LoginPage extends StatefulWidget {
   const LoginPage({super.key, required this.title});
 
   final String title;
+
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -25,12 +27,24 @@ class _LoginPageState extends State<LoginPage> {
     if (!valid) {
       return;
     } else {
-      CandidatoServices().authenticarCandidato(email, password);
+      var (status, candidato) = await CandidatoServices().authenticarCandidato(email, password);
+      switch(status){
+        case ServiceStatus.Ok:
+          Toast.show(AppLocalizations.of(context)!.loginOkMessage, duration: 6, gravity: Toast.center);
+          break;
+        case ServiceStatus.ServiceError:
+          Toast.show(AppLocalizations.of(context)!.serviceResponseError, duration: 6, gravity: Toast.center);
+          break;
+        case ServiceStatus.NotFound:
+          Toast.show(AppLocalizations.of(context)!.loginErrorMessage, duration: 6, gravity: Toast.center);
+          break;
+      }
     }
   }
 
   @override
   Widget build(BuildContext context) {
+    ToastContext().init(context);
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(

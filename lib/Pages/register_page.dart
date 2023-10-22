@@ -20,7 +20,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
   registrarCandidato() async {
     var valid = _formKey.currentState!.validate();
-    if (valid) {
+    if (!valid) {
       return;
     } else {
       CandidatoServices().registrarCandidato(candidato, password);

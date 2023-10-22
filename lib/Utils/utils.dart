@@ -32,3 +32,24 @@ class RequiredLabel extends StatelessWidget {
   }
 }
 
+class ServiceResponse {
+  static ServiceStatus GetStatus(int statusCode) {
+    switch (statusCode) {
+      case 200:
+        return ServiceStatus.Ok;
+      case 500:
+        return ServiceStatus.ServiceError;
+      case 404:
+        return ServiceStatus.NotFound;
+      default:
+        return ServiceStatus.ServiceError;
+    }
+  }
+}
+
+
+enum ServiceStatus{
+  Ok,
+  ServiceError,
+  NotFound
+}
