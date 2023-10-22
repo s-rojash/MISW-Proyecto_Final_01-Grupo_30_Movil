@@ -42,5 +42,29 @@
   "invalidEmail": "Email is not valid",
   "@invalidEmail": {
     "description": "Message for an invalid email field"
+  },
+  "serviceResponseError": "Server connection error, please check your network settings",
+  "@serviceResponseError": {
+    "description": "Error message on server request error"
+  },
+  "serviceResponseNotFound": "Record not found",
+  "@serviceResponseNotFound": {
+    "description": "Error message on server response not found"
+  },
+  "loginOkMessage": "Successfully logged in",
+  "@loginOkMessage": {
+    "description": "Message for a successful login"
+  },
+  "loginErrorMessage": "Wrong email or password",
+  "@loginErrorMessage": {
+    "description": "Message for a NOT successful login"
+  },
+  "registerErrorMessage": "Could not create account, please check all fields",
+  "@registerErrorMessage": {
+    "description": "Message for a NOT successful candidate register"
+  },
+  "registerOkMessage": "Account created successfully! please login with your email and password",
+  "@registerOkMessage": {
+    "description": "Message for a successful register"
   }
 }

@@ -1,5 +1,5 @@
 name: abcjobs_movil
-description: A new Flutter project.
+description: ABCJobs app for candidates.
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
@@ -41,8 +41,11 @@ dependencies:
   http: ^1.1.0
   provider: ^6.0.5
   email_validator: ^2.1.17
+  toast: ^0.3.0
 
 dev_dependencies:
+  integration_test:
+    sdk: flutter
   flutter_test:
     sdk: flutter
 
