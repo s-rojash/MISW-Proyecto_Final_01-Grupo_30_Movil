@@ -34,15 +34,6 @@ class _RegisterPageState extends State<RegisterPage> {
       switch(status){
         case ServiceStatus.Ok:
           Toast.show(AppLocalizations.of(context)!.registerOkMessage, duration: 3, gravity: Toast.center);
-          await Future.delayed(const Duration(milliseconds: 2500), () {
-            setState(() {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const LoginPage(title: '',)),
-              );
-            });
-          });
             break;
         case ServiceStatus.ServiceError:
           Toast.show(AppLocalizations.of(context)!.serviceResponseError, duration: 6, gravity: Toast.center);

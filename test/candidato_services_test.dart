@@ -12,7 +12,12 @@ void main() {
     candidatoServices.client = MockClient((request) async {
       return Response(json.encode({
         'id':123,
-        'email': 'test@test.com'
+        'nombres': "Nombres de prueba",
+        'apellidos': "Nombres de prueba",
+        'email': "Nombres de prueba",
+        'celular': "Nombres de prueba",
+        'tipoDocumento': "Nombres de prueba",
+        'numDocumento': 123456 + 0.0,
       }),200);
     });
     final (serviceStatus, candidato) = await candidatoServices.authenticarCandidato("test@test.com", "123456");
@@ -24,10 +29,17 @@ void main() {
     final candidatoServices = CandidatoServices();
     candidatoServices.client = MockClient((request) async {
       return Response(json.encode({
-      }),200);
+        'id' : 123,
+        'nombres': "Nombres de prueba",
+        'apellidos': "Nombres de prueba",
+        'email': "Nombres de prueba",
+        'celular': "Nombres de prueba",
+        'tipoDocumento': "Nombres de prueba",
+        'numDocumento': 123456 + 0.0,
+      }),404);
     });
     final (serviceStatus, candidato) = await candidatoServices.authenticarCandidato("test@test.com", "123456XX");
-    expect(serviceStatus, ServiceStatus.Ok);
+    expect(serviceStatus, ServiceStatus.NotFound);
     expect(candidato?.id, null);
   });
 
@@ -41,7 +53,7 @@ void main() {
       'email': "Nombres de prueba",
       'celular': "Nombres de prueba",
       'tipoDocumento': "Nombres de prueba",
-      'numDocumento':"Nombres de prueba",
+      'numDocumento': 123456 + 0.0,
     });
     candidatoServices.client = MockClient((request) async {
       return Response(json.encode(candidato),200);
@@ -66,7 +78,7 @@ void main() {
       'email': "Nombres de prueba",
       'celular': "Nombres de prueba",
       'tipoDocumento': "Nombres de prueba",
-      'numDocumento':"Nombres de prueba",
+      'numDocumento': 123456 + 0.0,
     });
     candidatoServices.client = MockClient((request) async {
       return Response(json.encode(candidato),200);

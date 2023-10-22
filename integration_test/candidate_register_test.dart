@@ -11,7 +11,7 @@ void main() {
             (tester) async {
           // Load app widget.
           await tester.pumpWidget(const ABCJobsApp());
-          
+
           await tester.pumpAndSettle();
           await tester.tap(find.byKey(const Key('_btnIrARegistrarCandidato')));
           await tester.pumpAndSettle();
@@ -27,12 +27,13 @@ void main() {
           await tester.testTextInput.receiveAction(TextInputAction.done);
           await tester.pumpAndSettle();
           await tester.tap(find.byKey(const Key('_btnRegistrarCandidato')));
-          await tester.pumpAndSettle(const Duration(seconds: 4));
+          await tester.pumpAndSettle(const Duration(seconds: 3));
           await tester.tap(find.byKey(const Key('_btnIrALogin')));
           await tester.pumpAndSettle();
 
 
           /// Ahora hace login
+          await tester.pumpAndSettle(const Duration(seconds: 2));
           await tester.enterText(find.byKey(const Key('_email')), "prueba@prueba.com");
           await tester.enterText(find.byKey(const Key('_password')), "123456");
           await tester.pumpAndSettle();
