@@ -13,5 +13,7 @@
     "serviceResponseError": "Error en la respuesta del servidor",
     "serviceResponseNotFound": "No se encontró el registro",
     "loginOkMessage": "Sesión iniciada correctamente",
-    "loginErrorMessage": "Correo electrónico o contraseña inválidos"
+    "loginErrorMessage": "Correo electrónico o contraseña inválidos",
+    "registerOkMessage": "¡Cuenta creada correctamente! por favor inicie sesión con su correo y contraseña",
+    "registerErrorMessage": "No se pudo crear la cuenta, revise todos los campos"
 }

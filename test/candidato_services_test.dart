@@ -1,5 +1,6 @@
 import 'package:abcjobs_movil/BackendServices/candidato_services.dart';
 import 'package:abcjobs_movil/Models/candidato.dart';
+import 'package:abcjobs_movil/Utils/utils.dart';
 import 'package:test/test.dart';
 import 'package:http/http.dart';
 import 'package:http/testing.dart';
@@ -14,8 +15,9 @@ void main() {
         'email': 'test@test.com'
       }),200);
     });
-    final respuesta = await candidatoServices.authenticarCandidato("test@test.com", "123456");
-    expect(respuesta?.id, 123);
+    final (serviceStatus, candidato) = await candidatoServices.authenticarCandidato("test@test.com", "123456");
+    expect(serviceStatus, ServiceStatus.Ok);
+    expect(candidato?.id, 123);
   });
 
   test('Probar inicio de sesión con usuario y contraseña errados', () async {
@@ -24,8 +26,9 @@ void main() {
       return Response(json.encode({
       }),200);
     });
-    final respuesta = await candidatoServices.authenticarCandidato("test@test.com", "123456XX");
-    expect(respuesta?.id, null);
+    final (serviceStatus, candidato) = await candidatoServices.authenticarCandidato("test@test.com", "123456XX");
+    expect(serviceStatus, ServiceStatus.Ok);
+    expect(candidato?.id, null);
   });
 
 
@@ -43,14 +46,15 @@ void main() {
     candidatoServices.client = MockClient((request) async {
       return Response(json.encode(candidato),200);
     });
-    final respuesta = await candidatoServices.registrarCandidato(candidato, '12345');
-    expect(respuesta?.id, isNotNull);
-    expect(respuesta?.nombres, candidato.nombres);
-    expect(respuesta?.apellidos, candidato.apellidos);
-    expect(respuesta?.email, candidato.email);
-    expect(respuesta?.celular, candidato.celular);
-    expect(respuesta?.tipoDocumento, candidato.tipoDocumento);
-    expect(respuesta?.numDocumento, candidato.numDocumento);
+    final (serviceStatus, candidatoRespuesta) = await candidatoServices.registrarCandidato(candidato, '12345');
+    expect(serviceStatus, ServiceStatus.Ok);
+    expect(candidatoRespuesta?.id, isNotNull);
+    expect(candidatoRespuesta?.nombres, candidato.nombres);
+    expect(candidatoRespuesta?.apellidos, candidato.apellidos);
+    expect(candidatoRespuesta?.email, candidato.email);
+    expect(candidatoRespuesta?.celular, candidato.celular);
+    expect(candidatoRespuesta?.tipoDocumento, candidato.tipoDocumento);
+    expect(candidatoRespuesta?.numDocumento, candidato.numDocumento);
   });
 
 
@@ -67,8 +71,9 @@ void main() {
     candidatoServices.client = MockClient((request) async {
       return Response(json.encode(candidato),200);
     });
-    final respuesta = await candidatoServices.registrarCandidato(candidato, '12345');
-    expect(respuesta?.id, isNull);
+    final (serviceStatus, candidatoRespuesta) = await candidatoServices.registrarCandidato(candidato, '12345');
+    expect(serviceStatus, ServiceStatus.Ok);
+    expect(candidatoRespuesta?.id, isNull);
   });
 
 }

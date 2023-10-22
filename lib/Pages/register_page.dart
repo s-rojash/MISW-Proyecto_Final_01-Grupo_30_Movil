@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:toast/toast.dart';
 
 import '../BackendServices/candidato_services.dart';
 import '../Models/candidato.dart';
@@ -23,12 +24,24 @@ class _RegisterPageState extends State<RegisterPage> {
     if (!valid) {
       return;
     } else {
-      CandidatoServices().registrarCandidato(candidato, password);
+      var (status, candidatoRespuesta) = await CandidatoServices().registrarCandidato(candidato, password);
+      switch(status){
+        case ServiceStatus.Ok:
+          Toast.show(AppLocalizations.of(context)!.registerOkMessage, duration: 6, gravity: Toast.center);
+          break;
+        case ServiceStatus.ServiceError:
+          Toast.show(AppLocalizations.of(context)!.serviceResponseError, duration: 6, gravity: Toast.center);
+          break;
+        case ServiceStatus.NotFound:
+          Toast.show(AppLocalizations.of(context)!.registerErrorMessage, duration: 6, gravity: Toast.center);
+          break;
+      }
     }
   }
 
   @override
   Widget build(BuildContext context) {
+    ToastContext().init(context);
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(

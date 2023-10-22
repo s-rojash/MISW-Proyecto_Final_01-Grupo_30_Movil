@@ -21,7 +21,7 @@ class CandidatoServices {
           'password': password
         })
     );
-    Candidato? candidato = null;
+    Candidato? candidato;
     var serviceStatus = ServiceResponse.GetStatus(response.statusCode);
     if (serviceStatus == ServiceStatus.Ok){
         candidato = Candidato.fromJson(json.decode(response.body));
@@ -30,7 +30,7 @@ class CandidatoServices {
     return (serviceStatus, candidato);
   }
 
-  registrarCandidato(Candidato datosCandidato, String password) async{
+  Future<(ServiceStatus, Candidato?)> registrarCandidato(Candidato datosCandidato, String password) async{
     String url = "${config.BackendURL}/candidatos/";
     final response = await client.post(
         Uri.parse(url),
@@ -47,7 +47,11 @@ class CandidatoServices {
           'password': password,
         })
     );
-    Candidato candidato = Candidato.fromJson(json.decode(response.body));
-    return candidato;
+    Candidato? candidato;
+    var serviceStatus = ServiceResponse.GetStatus(response.statusCode);
+    if (serviceStatus == ServiceStatus.Ok){
+      candidato = Candidato.fromJson(json.decode(response.body));
+    }
+    return (serviceStatus, candidato);
   }
 }

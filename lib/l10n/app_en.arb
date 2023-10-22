@@ -58,6 +58,14 @@
   "loginErrorMessage": "Wrong email or password",
   "@loginErrorMessage": {
     "description": "Message for a NOT successful login"
+  },
+  "registerErrorMessage": "Could not create account, please check all fields",
+  "@registerErrorMessage": {
+    "description": "Message for a NOT successful candidate register"
+  },
+  "registerOkMessage": "Account created successfully! please login with your email and password",
+  "@registerOkMessage": {
+    "description": "Message for a successful register"
   }
 
 }
