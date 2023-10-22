@@ -72,4 +72,24 @@ void main() {
     expect(candidato.tipoDocumento, candidatoJson['tipoDocumento']);
     expect(candidato.numDocumento, candidatoJson['numDocumento']);
   });
+
+  test('Probar setters del modelo', () async {
+    Candidato candidato = Candidato();
+    candidato.id =  13;
+    candidato.nombres= "Nombres de prueba";
+    candidato.apellidos= "Apellidos de prueba";
+    candidato.email= "email@test.com";
+    candidato.celular= "31234545678";
+    candidato.tipoDocumento= "C.C.";
+    candidato.numDocumento= "ASD123456";
+
+    expect(candidato.id, 13);
+    expect(candidato.nombres, "Nombres de prueba");
+    expect(candidato.apellidos, "Apellidos de prueba");
+    expect(candidato.email,"email@test.com");
+    expect(candidato.celular, "31234545678");
+    expect(candidato.tipoDocumento, "C.C.");
+    expect(candidato.numDocumento, "ASD123456");
+  });
+
 }

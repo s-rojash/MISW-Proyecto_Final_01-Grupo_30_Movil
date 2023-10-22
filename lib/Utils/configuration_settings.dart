@@ -1,1 +1,1 @@
-const String BackendURL = 'http://localhost';
+const String BackendURL = 'https://ms-candidatos.azurewebsites.net';

@@ -9,9 +9,9 @@ class CandidatoServices {
 
   authenticarCandidato(String email, String password) async {
     final response = await client.post(
-        Uri.parse("${config.BackendURL}/candidatos/"),
+        Uri.parse("${config.BackendURL}/candidatos/auth"),
         headers: <String, String>{
-          'Content-Type': 'application/json; charset=UTF-8',
+          'Content-Type': 'application/json',
         },
         body: jsonEncode({
           email: email,

@@ -2,54 +2,31 @@ import 'dart:async';
 
 class Candidato {
   int? _id;
-
   int? get id => _id;
+  set id(int? value) => _id = value;
 
-  set id(int? value) {
-    _id = value;
-  }
   String? _nombres;
-
   String? get nombres => _nombres;
+  set nombres(String? value) => _nombres = value;
 
-  set nombres(String? value) {
-    _nombres = value;
-  }
   String? _apellidos;
-
   String? get apellidos => _apellidos;
-
-  set apellidos(String? value) {
-    _apellidos = value;
-  }
+  set apellidos(String? value) => _apellidos = value;
   String? _email;
-
   String? get email => _email;
+  set email(String? value) => _email = value;
 
-  set email(String? value) {
-    _email = value;
-  }
   String? _celular;
-
   String? get celular => _celular;
+  set celular(String? value) => _celular = value;
 
-  set celular(String? value) {
-    _celular = value;
-  }
   String? _tipoDocumento;
-
   String? get tipoDocumento => _tipoDocumento;
+  set tipoDocumento(String? value) => _tipoDocumento = value;
 
-  set tipoDocumento(String? value) {
-    _tipoDocumento = value;
-  }
   String? _numDocumento;
-
   String? get numDocumento => _numDocumento;
-
-  set numDocumento(String? value) {
-    _numDocumento = value;
-  }
+  set numDocumento(String? value) => _numDocumento = value;
 
   Candidato({
     int? id,
