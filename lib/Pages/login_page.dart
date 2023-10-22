@@ -9,7 +9,6 @@ import 'register_page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key, required this.title});
-
   final String title;
 
 
@@ -21,6 +20,7 @@ class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
   var email = '';
   var password = '';
+  String resultMessage = "";
 
   autenticarCandidato() async {
     var valid = _formKey.currentState!.validate();
@@ -30,13 +30,13 @@ class _LoginPageState extends State<LoginPage> {
       var (status, candidato) = await CandidatoServices().authenticarCandidato(email, password);
       switch(status){
         case ServiceStatus.Ok:
-          Toast.show(AppLocalizations.of(context)!.loginOkMessage, duration: 6, gravity: Toast.center);
+          setState(() => resultMessage = AppLocalizations.of(context)!.loginOkMessage);
           break;
         case ServiceStatus.ServiceError:
-          Toast.show(AppLocalizations.of(context)!.serviceResponseError, duration: 6, gravity: Toast.center);
+          setState(() => resultMessage = AppLocalizations.of(context)!.serviceResponseError);
           break;
         case ServiceStatus.NotFound:
-          Toast.show(AppLocalizations.of(context)!.loginErrorMessage, duration: 6, gravity: Toast.center);
+          setState(() => resultMessage = AppLocalizations.of(context)!.loginErrorMessage);
           break;
       }
     }
@@ -44,7 +44,6 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    ToastContext().init(context);
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
@@ -64,6 +63,7 @@ class _LoginPageState extends State<LoginPage> {
                 SizedBox(
                   width: 300,
                   child: TextFormField(
+                      key: Key("_email"),
                       onChanged: (value) {
                         email = value;
                       },
@@ -77,6 +77,7 @@ class _LoginPageState extends State<LoginPage> {
                 SizedBox(
                   width: 300,
                   child: TextFormField(
+                      key: Key("_password"),
                       onChanged: (value) {
                         password = value;
                       },
@@ -88,11 +89,20 @@ class _LoginPageState extends State<LoginPage> {
                         suffixIcon: const Icon(Icons.cancel_outlined),
                       )),
                 ),
-                SizedBox(height: 50),
+                SizedBox(
+                    height: 40,
+                    width: 300,
+                    child: Center(
+                        child: Text(
+                            resultMessage,
+                            style: TextStyle(fontSize: 16, color: Colors.white))
+                  ),
+                ),
                 SizedBox(
                   height: 40,
                   width: 300,
                   child: ElevatedButton(
+                      key: Key("_btnAutenticarCandidato"),
                       style: ElevatedButton.styleFrom(
                         primary: HexColor("95CCFF"), // background
                         onPrimary: Colors.white, // foreground
@@ -108,6 +118,7 @@ class _LoginPageState extends State<LoginPage> {
                   height: 40,
                   width: 300,
                   child: ElevatedButton(
+                      key: Key("_btnIrARegistrarCandidato"),
                       onPressed: () {
                         Navigator.push(
                           context,

@@ -11,7 +11,7 @@ void main() {
     String email = "email@test.com";
     String celular = "31234545678";
     String tipoDocumento = "C.C.";
-    String numDocumento = "ASD123456";
+    double numDocumento = 123456;
     Candidato candidato = Candidato(
         id: id,
         nombres: nombres,
@@ -60,7 +60,7 @@ void main() {
         email: "email@test.com",
         celular: "31234545678",
         tipoDocumento: "C.C.",
-        numDocumento: "ASD123456");
+        numDocumento: 123456);
 
     final candidatoJson = candidato.toJson();
 
@@ -81,7 +81,7 @@ void main() {
     candidato.email= "email@test.com";
     candidato.celular= "31234545678";
     candidato.tipoDocumento= "C.C.";
-    candidato.numDocumento= "ASD123456";
+    candidato.numDocumento= 123456;
 
     expect(candidato.id, 13);
     expect(candidato.nombres, "Nombres de prueba");

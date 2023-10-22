@@ -67,5 +67,4 @@
   "@registerOkMessage": {
     "description": "Message for a successful register"
   }
-
 }

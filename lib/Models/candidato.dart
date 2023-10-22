@@ -24,9 +24,9 @@ class Candidato {
   String? get tipoDocumento => _tipoDocumento;
   set tipoDocumento(String? value) => _tipoDocumento = value;
 
-  String? _numDocumento;
-  String? get numDocumento => _numDocumento;
-  set numDocumento(String? value) => _numDocumento = value;
+  double? _numDocumento;
+  double? get numDocumento => _numDocumento;
+  set numDocumento(double? value) => _numDocumento = value;
 
   Candidato({
     int? id,
@@ -35,7 +35,7 @@ class Candidato {
     String? email,
     String? celular,
     String? tipoDocumento,
-    String? numDocumento,
+    double? numDocumento,
   }) : _id = id, _numDocumento = numDocumento, _tipoDocumento = tipoDocumento, _celular = celular, _email = email, _apellidos = apellidos, _nombres = nombres;
 
   factory Candidato.fromJson(Map<String, dynamic> json) {
@@ -46,7 +46,7 @@ class Candidato {
       email: json['email'],
       celular: json['celular'],
       tipoDocumento: json['tipoDocumento'],
-      numDocumento: json['numDocumento'],
+      numDocumento: json['numDocumento'] as double,
     );
   }
   Map<String, dynamic> toJson() {

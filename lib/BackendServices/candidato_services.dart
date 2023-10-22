@@ -10,7 +10,7 @@ class CandidatoServices {
 
 
    Future<(ServiceStatus, Candidato?)> authenticarCandidato(String email, String password) async {
-    String url = "${config.BackendURL}/candidatos/auth/";
+    String url = "${config.BackendURL}/candidatos/auth";
     final response = await client.post(
         Uri.parse(url),
         headers: <String, String>{
@@ -43,7 +43,7 @@ class CandidatoServices {
           'email': datosCandidato.email!,
           'celular': datosCandidato.celular!,
           'tipoDocumento': datosCandidato.tipoDocumento!,
-          'numDocumento': datosCandidato.numDocumento!,
+          'numDocumento': datosCandidato.numDocumento!.toString(),
           'password': password,
         })
     );

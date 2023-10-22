@@ -36,6 +36,7 @@ class ServiceResponse {
   static ServiceStatus GetStatus(int statusCode) {
     switch (statusCode) {
       case 200:
+      case 201:
         return ServiceStatus.Ok;
       case 500:
         return ServiceStatus.ServiceError;
