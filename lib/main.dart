@@ -7,11 +7,11 @@ import 'package:toast/toast.dart';
 import 'Pages/login_page.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const ABCJobsApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class ABCJobsApp extends StatelessWidget {
+  const ABCJobsApp({super.key});
 
   // This widget is the root of your application.
   @override
