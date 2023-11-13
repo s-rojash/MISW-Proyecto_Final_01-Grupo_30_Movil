@@ -33,7 +33,13 @@ En windows, es posible que el script de conversión no esté disponible como var
 
 Las pruebas unitarias se realizan con flutter_test y se encuentran en la carpeta /test
 
-las pruebas E2E (llamadas pruebas de integración en flutter) se realizan con ìntegration_test y se encuentran en la carpeta /e2e_test
+El siguiente comando corre todas las pruebas unitarias incluidas en /test y cuyo nombre de archivo termine en "_test.dart"
+
+```flutter test```
+
+las pruebas E2E (llamadas pruebas de integración en flutter) se realizan con ìntegration_test y se encuentran en la carpeta /integration_test
+
+El siguiente comando ejecuta las pruebas de E2E que se encuentren en la carpeta /integration_test y cuyo nombre termine en _test.dart
 
 ```flutter pub add 'dev:flutter_test:{"sdk":"flutter"}'  'dev:integration_test:{"sdk":"flutter"}'```
 
