@@ -1,4 +1,5 @@
 {
+    "appTitle": "ABC Jobs",
     "email": "Correo electrónico",
     "password": "Contraseña",
     "login": "Iniciar sesión",
@@ -14,6 +15,11 @@
     "serviceResponseNotFound": "No se encontró el registro",
     "loginOkMessage": "Sesión iniciada correctamente",
     "loginErrorMessage": "Correo electrónico o contraseña inválidos",
+    "logoutMessage": "Cerrar sesión",
     "registerOkMessage": "¡Cuenta creada correctamente! por favor inicie sesión con su correo y contraseña",
-    "registerErrorMessage": "No se pudo crear la cuenta, revise todos los campos"
+    "registerErrorMessage": "No se pudo crear la cuenta, revise todos los campos",
+    "testListTitle": "Pruebas programadas",
+    "testListSubtitle": "Revise la programación de las pruebas pendientes por presentar",
+    "testListGotoTest": "Go to test",
+    "testListGotoStatus": "Status"
 }

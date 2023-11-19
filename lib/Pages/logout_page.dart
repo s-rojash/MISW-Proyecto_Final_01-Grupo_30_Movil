@@ -1,4 +1,3 @@
-import 'package:abcjobs_movil/Pages/assigned_tests_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:toast/toast.dart';
@@ -8,38 +7,20 @@ import '../Utils/utils.dart';
 import '../Utils/validaciones.dart';
 import 'register_page.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+class LogoutPage extends StatefulWidget {
+  const LogoutPage({super.key, required this.title});
+  final String title;
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<LogoutPage> createState() => _LogoutPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _LogoutPageState extends State<LogoutPage> {
   final _formKey = GlobalKey<FormState>();
-  var email = '';
-  var password = '';
   String resultMessage = "";
 
-  autenticarCandidato() async {
-    var valid = _formKey.currentState!.validate();
-    if (!valid) {
-      return;
-    } else {
-      var (status, candidato) = await CandidatoServices().authenticarCandidato(email, password);
-      switch(status){
-        case ServiceStatus.Ok:
-          setState(() => resultMessage = AppLocalizations.of(context)!.loginOkMessage);
-          Navigator.of(context).push(MaterialPageRoute(builder: (context) => AssignedTestsPage(candidato: candidato!)));
-          break;
-        case ServiceStatus.ServiceError:
-          setState(() => resultMessage = AppLocalizations.of(context)!.serviceResponseError);
-          break;
-        case ServiceStatus.NotFound:
-          setState(() => resultMessage = AppLocalizations.of(context)!.loginErrorMessage);
-          break;
-      }
-    }
+  cerrarSesion() async {
+
   }
 
   @override
@@ -59,36 +40,7 @@ class _LoginPageState extends State<LoginPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Image.asset('assets/images/logo.png'),
-                SizedBox(height: 30),
-                SizedBox(
-                  width: 300,
-                  child: TextFormField(
-                      key: Key("_email"),
-                      onChanged: (value) {
-                        email = value;
-                      },
-                      validator: (value) => validarEmail(context, value),
-                      decoration: InputDecoration(
-                    label: RequiredLabel(AppLocalizations.of(context)!.email),
-                    suffixIcon: const Icon(Icons.cancel_outlined),
-                  )),
-                ),
-                SizedBox(height: 40),
-                SizedBox(
-                  width: 300,
-                  child: TextFormField(
-                      key: Key("_password"),
-                      onChanged: (value) {
-                        password = value;
-                      },
-                      validator: (value) => validarTexto(context, value),
-                      obscureText: true,
-                      decoration: InputDecoration(
-                        label: RequiredLabel(
-                            AppLocalizations.of(context)!.password),
-                        suffixIcon: const Icon(Icons.cancel_outlined),
-                      )),
-                ),
+                SizedBox(height: 100),
                 SizedBox(
                     height: 40,
                     width: 300,
@@ -108,7 +60,7 @@ class _LoginPageState extends State<LoginPage> {
                         onPrimary: Colors.white, // foreground
                       ),
                       onPressed: () async {
-                        await autenticarCandidato();
+                        await cerrarSesion();
                       },
                       child: Text(AppLocalizations.of(context)!.login,
                           style: TextStyle(fontSize: 20))),

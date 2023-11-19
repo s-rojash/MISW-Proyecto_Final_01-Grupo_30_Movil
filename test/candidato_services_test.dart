@@ -1,5 +1,6 @@
 import 'package:abcjobs_movil/BackendServices/candidato_services.dart';
 import 'package:abcjobs_movil/Models/candidato.dart';
+import 'package:abcjobs_movil/Models/prueba_agendada.dart';
 import 'package:abcjobs_movil/Utils/utils.dart';
 import 'package:test/test.dart';
 import 'package:http/http.dart';
@@ -88,4 +89,22 @@ void main() {
     expect(candidatoRespuesta?.id, isNull);
   });
 
+
+  test('Probar traer listado de pruebas asignadas', () async {
+    final candidatoServices = CandidatoServices();
+    List<PruebaAgendada> pruebasAgendadas = [PruebaAgendada.fromJson({
+      'id': 1,
+      'fecha': "2000-01-24",
+      'nombrePrueba': "Prueba uno",
+      'estado': "Asignada",
+    })];
+    candidatoServices.client = MockClient((request) async {
+      return Response(json.encode(pruebasAgendadas),200);
+    });
+    final (serviceStatus, pruebasAgendadasRespuesta) = await candidatoServices.listarPruebasAsignadas(1);
+    expect(serviceStatus, ServiceStatus.Ok);
+    expect(pruebasAgendadasRespuesta?.length, equals(1) );
+    expect(pruebasAgendadasRespuesta?[0].id, equals(1) );
+    expect(pruebasAgendadasRespuesta?[0].estado, equals("Asignada") );
+  });
 }

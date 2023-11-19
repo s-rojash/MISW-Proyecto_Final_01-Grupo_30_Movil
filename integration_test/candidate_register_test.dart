@@ -41,9 +41,9 @@ void main() {
           await tester.pumpAndSettle();
           await tester.tap(find.byKey(const Key('_btnAutenticarCandidato')));
           await tester.pumpAndSettle();
-          await tester.pumpAndSettle(const Duration(seconds: 2));
+          await tester.pumpAndSettle(const Duration(seconds: 5));
           await tester.pumpAndSettle();
-          expect(find.text('Successfully logged in'), findsOneWidget);
+          expect(find.text('Assigned Tests'), findsOneWidget);
         });
   });
 }

@@ -197,7 +197,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => const LoginPage(title: '',)),
+                                builder: (context) => const LoginPage()),
                           );
                         },
                         child: isLoading? SizedBox(

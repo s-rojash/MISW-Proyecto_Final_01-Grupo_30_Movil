@@ -48,7 +48,7 @@ class ABCJobsApp extends StatelessWidget {
               return Colors.grey;
             }),
           )),
-      home: LoginPage(title: 'ABCJobs'),
+      home: LoginPage(),
     );
   }
 }
