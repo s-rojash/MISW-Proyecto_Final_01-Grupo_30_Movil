@@ -1,3 +1,4 @@
+import 'package:abcjobs_movil/Pages/assigned_tests_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:toast/toast.dart';
@@ -8,9 +9,7 @@ import '../Utils/validaciones.dart';
 import 'register_page.dart';
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({super.key, required this.title});
-  final String title;
-
+  const LoginPage({super.key});
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -31,6 +30,7 @@ class _LoginPageState extends State<LoginPage> {
       switch(status){
         case ServiceStatus.Ok:
           setState(() => resultMessage = AppLocalizations.of(context)!.loginOkMessage);
+          Navigator.of(context).push(MaterialPageRoute(builder: (context) => AssignedTestsPage(candidato: candidato!)));
           break;
         case ServiceStatus.ServiceError:
           setState(() => resultMessage = AppLocalizations.of(context)!.serviceResponseError);

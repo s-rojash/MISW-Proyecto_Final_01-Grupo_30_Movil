@@ -1,4 +1,8 @@
 {
+  "appTitle" : "ABC Jobs",
+  "@appTitle": {
+    "description": "App's title"
+  },
   "email": "Email Address",
   "@email": {
     "description": "Email address"
@@ -59,6 +63,10 @@
   "@loginErrorMessage": {
     "description": "Message for a NOT successful login"
   },
+  "logoutMessage": "Logout",
+  "@logoutMessage": {
+    "description": "Message for logout button"
+  },
   "registerErrorMessage": "Could not create account, please check all fields",
   "@registerErrorMessage": {
     "description": "Message for a NOT successful candidate register"
@@ -66,5 +74,21 @@
   "registerOkMessage": "Account created successfully! please login with your email and password",
   "@registerOkMessage": {
     "description": "Message for a successful register"
+  },
+  "testListTitle": "Assigned Tests",
+  "@testListTitle": {
+    "description": "Title of the assigned tests list"
+  },
+  "testListSubtitle": "Please check all the pending assigned tasks schedule",
+  "@testListSubtitle": {
+    "description": "Additional instructions for checking assigned tasks"
+  },
+  "testListGotoTest": "Go to test",
+  "@testListSubtitle": {
+    "description": "button's text when test is enabled"
+  },
+  "testListGotoStatus": "Status",
+  "@testListGotoStatus": {
+    "description": "Status description label"
   }
 }

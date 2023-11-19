@@ -1,4 +1,6 @@
-import '../Utils/configuration_settings.dart' as config show BackendURL;
+import 'package:abcjobs_movil/Models/prueba_agendada.dart';
+
+import '../Utils/configuration_settings.dart' as config show BackendURL, BackendURLEntrevistas;
 import 'package:abcjobs_movil/Models/candidato.dart';
 import 'package:http/http.dart' show Client;
 import 'dart:convert';
@@ -53,5 +55,24 @@ class CandidatoServices {
       candidato = Candidato.fromJson(json.decode(response.body));
     }
     return (serviceStatus, candidato);
+  }
+
+  Future<(ServiceStatus, List<PruebaAgendada>?)> listarPruebasAsignadas(int idCandidato) async{
+    String url = "${config.BackendURLEntrevistas}/agenda-pruebas/ListarAgendaPruebaCandidado/" + idCandidato.toString();
+    final response = await client.get(
+        Uri.parse(url),
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+        }
+    );
+    List<PruebaAgendada> pruebasAgendadas;
+    var serviceStatus = ServiceResponse.GetStatus(response.statusCode);
+    if (serviceStatus == ServiceStatus.Ok){
+      Iterable lista = json.decode(response.body);
+      pruebasAgendadas = List<PruebaAgendada>.from(lista.map((x) => PruebaAgendada.fromJson(x)));
+      return (serviceStatus, pruebasAgendadas);
+    } else {
+      return (serviceStatus, null);
+    }
   }
 }
