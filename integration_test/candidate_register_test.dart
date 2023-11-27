@@ -18,7 +18,13 @@ void main() {
 
           await tester.enterText(find.byKey(const Key('_nombres')), "Prueba Nombres");
           await tester.enterText(find.byKey(const Key('_apellidos')), "Prueba Apellidos");
-          await tester.enterText(find.byKey(const Key('_tipoDocumento')), "1");
+          await tester.tap(find.byKey(const Key('_tipoDocumento')));
+          await tester.pumpAndSettle();
+          await tester.pumpAndSettle(const Duration(seconds: 1));
+          final dropdownItem = find.text('CC').last;
+          await tester.tap(dropdownItem);
+          await tester.pumpAndSettle();
+
           await tester.enterText(find.byKey(const Key('_numDocumento')), "123456");
           await tester.enterText(find.byKey(const Key('_celular')), "3000000000");
           await tester.enterText(find.byKey(const Key('_email')), "prueba@prueba.com");

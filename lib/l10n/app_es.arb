@@ -10,6 +10,10 @@
     "idDocumentNumber": "Número de documento de identidad",
     "mobilePhoneNumber": "Número de celular",
     "fieldRequired": "El campo es obligatorio",
+    "fieldMinimumLengthError": "La longitud mínima es: ",
+    "fieldMaximumLengthError": "La longitud máxima es: ",
+    "fieldMinimumValueError": "El valor mínimo: ",
+    "fieldMaximumValueError": "El valor máximo es: ",
     "invalidEmail": "El correo electrónico no es válido",
     "serviceResponseError": "Error en la respuesta del servidor",
     "serviceResponseNotFound": "No se encontró el registro",
@@ -21,5 +25,10 @@
     "testListTitle": "Pruebas programadas",
     "testListSubtitle": "Revise la programación de las pruebas pendientes por presentar",
     "testListGotoTest": "Go to test",
-    "testListGotoStatus": "Status"
+    "testListGotoStatus": "Status",
+    "candidateModifyOkMessage": "¡Cuenta modificada correctamente! recuerde iniciar sesión con su correo y contraseña",
+    "candidateModifyErrorMessage": "No se pudo modificar la cuenta, revise todos los campos",
+    "candidateModifySave": "Guardar cuenta",
+    "drawerModifyProfile": "Modificar perfil",
+    "drawerAssignedTests": "Pruebas agendadas"
 }

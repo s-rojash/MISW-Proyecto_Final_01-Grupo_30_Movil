@@ -1,4 +1,5 @@
 import 'package:abcjobs_movil/Models/prueba_agendada.dart';
+import 'package:abcjobs_movil/Pages/user_modify_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:toast/toast.dart';
@@ -11,17 +12,18 @@ import 'login_page.dart';
 
 class AssignedTestsPage extends StatefulWidget {
   Candidato candidato;
-
-  AssignedTestsPage({super.key, required this.candidato});
+  String pwd;
+  AssignedTestsPage({super.key, required this.candidato, required this.pwd});
 
   @override
-  State<AssignedTestsPage> createState() => _AssignedTestsPageState(this.candidato);
+  State<AssignedTestsPage> createState() => _AssignedTestsPageState(this.candidato, this.pwd);
 }
 
 class _AssignedTestsPageState extends State<AssignedTestsPage> {
   final _formKey = GlobalKey<FormState>();
   Candidato candidato;
-  _AssignedTestsPageState(this.candidato);
+  String pwd;
+  _AssignedTestsPageState(this.candidato, this.pwd);
   List<PruebaAgendada> testsList = <PruebaAgendada>[];
   bool isLoading = false;
 
@@ -35,6 +37,41 @@ class _AssignedTestsPageState extends State<AssignedTestsPage> {
   Widget build(BuildContext context) {
     ToastContext().init(context);
     return Scaffold(
+      drawer: Drawer(
+        child:Container(
+          color: Colors.white,
+          child: ListView(
+          // Important: Remove any padding from the ListView.
+          padding: EdgeInsets.zero,
+          children: [
+            DrawerHeader(
+              decoration: BoxDecoration(
+                color: Colors.white,
+              ),
+              child: Column(
+                children: [
+                  Image.asset("assets/images/foto.png"),
+                  SizedBox(height: 10,),
+                  Text("${candidato.nombres} ${candidato.apellidos}"),
+                ],
+              )
+            ),
+            ListTile(
+              title: Text(AppLocalizations.of(context)!.drawerModifyProfile),
+              onTap: () {
+                Navigator.of(context).push(MaterialPageRoute(builder: (context) => UserModifyPage(candidato: candidato, pwd: pwd)));
+              },
+            ),
+            ListTile(
+              title: Text(AppLocalizations.of(context)!.drawerAssignedTests),
+              onTap: () {
+                Navigator.of(context).push(MaterialPageRoute(builder: (context) => AssignedTestsPage(candidato: candidato, pwd: pwd)));
+              },
+            ),
+          ],
+        ),
+      ),
+      ),
       appBar: AppBar(
         iconTheme: IconThemeData(color: Colors.white),
         title: Center(
@@ -43,14 +80,6 @@ class _AssignedTestsPageState extends State<AssignedTestsPage> {
                 color: Colors.white
             )
           )
-        ),
-        leading: IconButton(
-          icon: const Icon(Icons.menu),
-          tooltip: AppLocalizations.of(context)!.appTitle,
-          onPressed: () {
-            ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(content: Text(AppLocalizations.of(context)!.appTitle)));
-          },
         ),
         actions: <Widget>[
           IconButton(
