@@ -1,5 +1,8 @@
 import 'package:abcjobs_movil/BackendServices/candidato_services.dart';
 import 'package:abcjobs_movil/Models/candidato.dart';
+import 'package:abcjobs_movil/Models/candidato_habilidad.dart';
+import 'package:abcjobs_movil/Models/habilidad.dart';
+import 'package:abcjobs_movil/Models/id.dart';
 import 'package:abcjobs_movil/Models/prueba_agendada.dart';
 import 'package:abcjobs_movil/Utils/utils.dart';
 import 'package:test/test.dart';
@@ -106,5 +109,85 @@ void main() {
     expect(pruebasAgendadasRespuesta?.length, equals(1) );
     expect(pruebasAgendadasRespuesta?[0].id, equals(1) );
     expect(pruebasAgendadasRespuesta?[0].estado, equals("Asignada") );
+  });
+
+  test('Probar traer listado de habilidades', () async {
+    final candidatoServices = CandidatoServices();
+    List<Habilidad> habilidades = [Habilidad.fromJson({
+      'id': 1,
+      'tipoHabilidad': "Prueba",
+      'habilidad': "Prueba uno",
+      'habilidad_en': "Test one",
+    })];
+    candidatoServices.client = MockClient((request) async {
+      return Response(json.encode(habilidades),200);
+    });
+    final (serviceStatus, pruebasAgendadasRespuesta) = await candidatoServices.listarHabilidades();
+    expect(serviceStatus, ServiceStatus.Ok);
+    expect(pruebasAgendadasRespuesta?.length, equals(1) );
+    expect(pruebasAgendadasRespuesta?[0].id, equals(1) );
+    expect(pruebasAgendadasRespuesta?[0].habilidad, equals("Prueba uno") );
+  });
+
+  test('Probar traer listado de habilidades del candidato', () async {
+    final candidatoServices = CandidatoServices();
+    Candidato candidato = Candidato.fromJson({
+      'id': 1,
+      'nombres': "Nombres de prueba",
+      'apellidos': "Nombres de prueba",
+      'email': "Nombres de prueba",
+      'celular': "Nombres de prueba",
+      'tipoDocumento': "Nombres de prueba",
+      'numDocumento': 123456 + 0.0,
+    });
+    Habilidad habilidad = Habilidad.fromJson({
+      'id': 1,
+      'tipoHabiliad': "prueba",
+      'habilidad': "Desarrollo",
+      'habilidad_en': "Developmen"
+    });
+    List<CandidatoHabilidad> habilidadesCandidato = [CandidatoHabilidad.fromJson({
+      'id': 1,
+      'candidato': Id.fromJson({'id': 1}),
+      'habilidad': Id.fromJson({'id': 1}),
+    })];
+    candidatoServices.client = MockClient((request) async {
+      return Response(json.encode(habilidadesCandidato),200);
+    });
+    final (serviceStatus, habilidadesCandidatoRetornadas) = await candidatoServices.listarHabilidadesCandidato(1);
+    expect(serviceStatus, ServiceStatus.Ok);
+    expect(habilidadesCandidatoRetornadas?.length, equals(1) );
+    //expect(habilidadesCandidatoRetornadas?[0], equals(1) );
+  });
+
+  test('Probar traer listado de habilidades del candidato con Id', () async {
+    final candidatoServices = CandidatoServices();
+    Candidato candidato = Candidato.fromJson({
+      'id': 1,
+      'nombres': "Nombres de prueba",
+      'apellidos': "Nombres de prueba",
+      'email': "Nombres de prueba",
+      'celular': "Nombres de prueba",
+      'tipoDocumento': "Nombres de prueba",
+      'numDocumento': 123456 + 0.0,
+    });
+    Habilidad habilidad = Habilidad.fromJson({
+      'id': 1,
+      'tipoHabiliad': "prueba",
+      'habilidad': "Desarrollo",
+      'habilidad_en': "Developmen"
+    });
+    List<CandidatoHabilidad> habilidadesCandidato = [CandidatoHabilidad.fromJson({
+      'id': 1,
+      'candidato': Id.fromJson({'id': 1}),
+      'habilidad': Id.fromJson({'id': 1}),
+    })];
+    candidatoServices.client = MockClient((request) async {
+      return Response(json.encode(habilidadesCandidato),200);
+    });
+    final (serviceStatus, habilidadesCandidatoRetornadas) = await candidatoServices.listarHabilidadesCandidatoConId(1);
+    expect(serviceStatus, ServiceStatus.Ok);
+    expect(habilidadesCandidatoRetornadas?.length, equals(1) );
+    //expect(habilidadesCandidatoRetornadas?[0], equals(1) );
   });
 }
