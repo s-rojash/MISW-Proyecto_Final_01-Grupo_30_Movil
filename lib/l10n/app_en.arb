@@ -43,6 +43,26 @@
   "@mobilePhoneNumber": {
     "description": "Message for an empty required field"
   },
+  "fieldRequired": "Required field",
+  "@mobilePhoneNumber": {
+    "description": "Message for an empty required field"
+  },
+  "fieldMinimumLengthError": "The minimum length is: ",
+  "@fieldMinimumLengthError": {
+    "description": "Message for minimum length validation"
+  },
+  "fieldMaximumLengthError": "The maximum length is: ",
+  "@fieldMaximumLengthError": {
+    "description": "Message for maximum length validation"
+  },
+  "fieldMinimumValueError": "The minimum value is: ",
+  "@fieldMinimumValueError": {
+    "description": "Message for minimum value validation"
+  },
+  "fieldMaximumValueError": "The maximum value is: ",
+  "@fieldMaximumValueError": {
+    "description": "Message for maximum value validation"
+  },
   "invalidEmail": "Email is not valid",
   "@invalidEmail": {
     "description": "Message for an invalid email field"
@@ -90,5 +110,25 @@
   "testListGotoStatus": "Status",
   "@testListGotoStatus": {
     "description": "Status description label"
+  },
+  "candidateModifyOkMessage": "Account modify successfully! remember to login with your email and password",
+  "@candidateModifyOkMessage": {
+    "description": "Message for a successful candidate modify"
+  },
+  "candidateModifyErrorMessage": "Could not modify account, please check all fields",
+  "@candidateModifyErrorMessage": {
+    "description": "Message for a NOT successful candidate modify"
+  },
+  "candidateModifySave": "Save Account",
+  "@candidateModifySave": {
+    "description": "Save button text"
+  },
+  "drawerModifyProfile": "Modify Profile",
+  "@drawerModifyProfile": {
+    "description": "Text for the modify profile option"
+  },
+  "drawerAssignedTests": "Assigned tests",
+  "@drawerAssignedTests": {
+    "description": "Text for the AssignedTests option"
   }
 }

@@ -22,6 +22,7 @@ class _RegisterPageState extends State<RegisterPage> {
   Candidato candidato = Candidato();
   String password = "";
   bool isLoading = false;
+  List<String> listaTiposDocumentosIdentificacion = <String>['CC', 'CE'];
 
   registrarCandidato() async {
     isLoading = true;
@@ -73,7 +74,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         onChanged: (value) {
                           candidato.nombres = value;
                         },
-                        validator: (value) => validarTexto(context, value),
+                        validator: (value) => validarTexto(context, value, 4, 128),
                         decoration: InputDecoration(
                           label: RequiredLabel(
                               AppLocalizations.of(context)!.firstName),
@@ -88,7 +89,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         onChanged: (value) {
                           candidato.apellidos = value;
                         },
-                        validator: (value) => validarTexto(context, value),
+                        validator: (value) => validarTexto(context, value, 4, 128),
                         decoration: InputDecoration(
                           label: RequiredLabel(
                               AppLocalizations.of(context)!.lastName),
@@ -98,18 +99,38 @@ class _RegisterPageState extends State<RegisterPage> {
                   SizedBox(height: 20),
                   SizedBox(
                     width: 300,
-                    child: TextFormField(
-                        key: Key("_tipoDocumento"),
-                        onChanged: (value) {
-                          candidato.tipoDocumento = value;
-                        },
-                        validator: (value) => validarTexto(context, value),
-                        decoration: InputDecoration(
-                          label: RequiredLabel(
-                              AppLocalizations.of(context)!.idDocumentType),
-                          suffixIcon: const Icon(Icons.cancel_outlined),
-                        )),
-                  ),
+                    child: DropdownMenu<String>(
+                      key: Key("_tipoDocumento"),
+                      width: 300,
+                      label: RequiredLabel(AppLocalizations.of(context)!.idDocumentType),
+                      dropdownMenuEntries: listaTiposDocumentosIdentificacion.map((item) {
+                        return new DropdownMenuEntry(
+                          value: item,
+                          label: item,
+                        );
+                      }).toList(),
+                      onSelected: (value) =>{
+                        candidato.tipoDocumento = value,
+                      },
+                      inputDecorationTheme: InputDecorationTheme(
+                        filled: true,
+                        fillColor: Colors.white,
+                        labelStyle: TextStyle(
+                          color: HexColor("00639A"),
+                        ),
+                        errorStyle: TextStyle(color: Colors.white),
+                        prefixIconColor:
+                        MaterialStateColor.resolveWith((Set<MaterialState> states) {
+                          if (states.contains(MaterialState.focused)) {
+                            return Colors.green;
+                          }
+                          if (states.contains(MaterialState.error)) {
+                            return Colors.red;
+                          }
+                          return Colors.grey;
+                        }),
+                      )),
+                    ),
                   SizedBox(height: 20),
                   SizedBox(
                     width: 300,
@@ -118,7 +139,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         onChanged: (value) {
                           candidato.numDocumento = double.parse(value);
                         },
-                        validator: (value) => validarTexto(context, value),
+                        validator: (value) => validarNumero(context, int.parse(value!), 1,999999999999),
                         decoration: InputDecoration(
                           label: RequiredLabel(
                               AppLocalizations.of(context)!.idDocumentNumber),
@@ -133,7 +154,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         onChanged: (value) {
                           candidato.celular = value;
                         },
-                        validator: (value) => validarTexto(context, value),
+                        validator: (value) => validarTexto(context, value, 10, 10),
                         decoration: InputDecoration(
                           label: RequiredLabel(
                               AppLocalizations.of(context)!.mobilePhoneNumber),
@@ -163,7 +184,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         onChanged: (value) {
                           password = value;
                         },
-                        validator: (value) => validarTexto(context, value),
+                        validator: (value) => validarTexto(context, value, 4, 32),
                         obscureText: true,
                         decoration: InputDecoration(
                           label: RequiredLabel(
