@@ -67,8 +67,8 @@ class _UserModifyState extends State<UserModifyPage> {
             .modificarCandidato(candidato, this.pwd);
         switch (status) {
           case ServiceStatus.Ok:
-            var statusHabilidadesLimpiadas = await CandidatoServices()
-                .limpiarHabilidadesCandidato(candidato!.id!);
+            //var statusHabilidadesLimpiadas = await CandidatoServices()
+            //    .limpiarHabilidadesCandidato(candidato!.id!);
 
             List<int> listadoHabilidadesSeleccionadas = [];
             habilidadesSeleccionadas.forEach((key, value) {
