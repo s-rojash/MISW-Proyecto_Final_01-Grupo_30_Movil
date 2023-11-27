@@ -130,7 +130,6 @@ class CandidatoServices {
           'Content-Type': 'application/json; charset=UTF-8',
         }
     );
-    List<CandidatoHabilidad> habilidadesCandidato;
     var serviceStatus = ServiceResponse.GetStatus(response.statusCode);
     if (serviceStatus == ServiceStatus.Ok){
       Iterable lista = json.decode(response.body);
